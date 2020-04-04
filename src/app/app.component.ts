@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
     title = 'D3.js with Angular!';
+    constructor(private route: ActivatedRoute, private apiService: ApiService) {
+        console.log('Called Constructor');
+        this.route.queryParams.subscribe(params => {
+            console.log(params);
+        });
+    }
 
     examples = [
         {
@@ -39,4 +48,10 @@ export class AppComponent {
         },
     ];
 
+    ngOnInit() {
+        this.apiService.getTitle().subscribe((data) => {
+            console.log(data);
+            this.title = data.toString();
+        });
+    }
 }

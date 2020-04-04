@@ -13,6 +13,7 @@ import { StackedBarChartComponent } from './04_stacked_bar_chart/stacked-bar-cha
 import { BrushZoomComponent } from './05_brush_zoom/brush-zoom.component';
 import { PieChartComponent } from './06_pie_chart/pie-chart.component';
 import { DonutChartComponent } from './07_donut_chart/donut-chart.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
     { path: 'line-chart', component: LineChartComponent },
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         MatMenuModule,
         MatSidenavModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
