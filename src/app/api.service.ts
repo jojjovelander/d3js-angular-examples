@@ -15,7 +15,8 @@ export class ApiService {
         return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_hello_world`);
     }
 
-    public getMockData() {
-        return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_mock_data`);
+    public getMockData(courseId: number, userId: number) {
+        // tslint:disable-next-line:max-line-length
+        return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_mock_data&courseid=${courseId}&userid=${userId}`);
     }
 }

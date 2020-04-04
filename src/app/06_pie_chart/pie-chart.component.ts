@@ -6,6 +6,7 @@ import * as d3Shape from 'd3-shape';
 import {ApiService} from '../api.service';
 
 import { POPULATION } from '../shared';
+import {ActivatedRoute} from '@angular/router';
 
 export interface PieChartData {
     age: String;
@@ -34,20 +35,23 @@ export class PieChartComponent implements OnInit {
     private svg: any;
     private data: any;
 
-    constructor(private apiService: ApiService) {
+    constructor(private route: ActivatedRoute, private apiService: ApiService) {
         this.width = 900 - this.margin.left - this.margin.right;
         this.height = 500 - this.margin.top - this.margin.bottom;
         this.radius = Math.min(this.width, this.height) / 2;
     }
 
     ngOnInit() {
-        this.apiService.getMockData().subscribe(
-            data => {
-                this.data = data;
-                this.initSvg();
-                this.drawPie();
-            }
-        );
+        this.route.queryParams.subscribe(params => {
+            console.log(params);
+            this.apiService.getMockData(params.courseId, params.userId).subscribe(
+                data => {
+                    this.data = data;
+                    this.initSvg();
+                    this.drawPie();
+                }
+            );
+        });
 
         /*this.apiService.getMockData().subscribe((data) => {
             console.log(POPULATION);
