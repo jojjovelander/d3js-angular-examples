@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {Attribute, ElementRef, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -16,6 +16,7 @@ import { PieChartComponent } from './06_pie_chart/pie-chart.component';
 import { DonutChartComponent } from './07_donut_chart/donut-chart.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
+import {ApiService} from './api.service';
 
 const appRoutes: Routes = [
     { path: 'line-chart', component: LineChartComponent },
@@ -26,10 +27,6 @@ const appRoutes: Routes = [
     { path: 'pie-chart', component: PieChartComponent },
     { path: 'bubble-chart', component: BubbleChartComponent },
     { path: 'donut-chart', component: DonutChartComponent },
-    { path: '',
-        redirectTo: '/pie-chart',
-        pathMatch: 'full'
-    },
     { path: '**', component: BubbleChartComponent }
 ];
 
@@ -54,7 +51,8 @@ const appRoutes: Routes = [
         MatSidenavModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [ApiService],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

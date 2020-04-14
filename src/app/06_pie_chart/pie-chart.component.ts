@@ -44,7 +44,7 @@ export class PieChartComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
             console.log(params);
-            this.apiService.getMockData(params.id, params.userId).subscribe(
+            this.apiService.getMockData(params.id).subscribe(
                 data => {
                     this.data = data;
                     console.log(this.data);

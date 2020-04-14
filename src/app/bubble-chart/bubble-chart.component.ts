@@ -25,8 +25,8 @@ export class BubbleChartComponent implements OnInit {
 
     title = 'Bubble Chart';
 
-    private width = 932;
-    private height = 932;
+    private width = 452;
+    private height = 452;
 
     private root: any;
     private svg: any;
@@ -43,9 +43,7 @@ export class BubbleChartComponent implements OnInit {
             console.log(params);
             this.apiService.getBubbleData(params.id).subscribe(
                 data => {
-                    console.log(data);
                     this.data = JSON.parse(data.toString()) as BubbleChartData[];
-                    console.log(this.data);
                     this.root = this.pack(this.data);
                     this.initSvg();
                     this.colour = this.createScale();
@@ -112,7 +110,7 @@ export class BubbleChartComponent implements OnInit {
             .text(d => d);
 
         leaf.append('title')
-            .text(d => `${d.data.eventname === undefined ? '' : `${d.data.eventname}`} ${this.format(d.count)}`);
+            .text(d => `${d.data.eventname === undefined ? '' : `${d.data.eventname}`} ${this.format(d.data.count)}`);
 
         return this.svg.node();
     }

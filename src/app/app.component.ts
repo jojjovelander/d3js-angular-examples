@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Attribute, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { ApiService } from './api.service';
 
@@ -9,23 +9,25 @@ import { ApiService } from './api.service';
 })
 export class AppComponent implements OnInit {
 
-    title = 'D3.js with Angular!';
-    constructor(private route: ActivatedRoute, private apiService: ApiService) {
-        console.log('Called Constructor');
+    title = '';
+    id = 0;
+    examples = [];
+    constructor(el: ElementRef, private route: ActivatedRoute,
+                private apiService: ApiService) {
+        apiService.userId = el.nativeElement.getAttribute('userId');
         this.route.queryParams.subscribe(params => {
-            console.log(params);
-        });
-    }
-
-    examples = [
-        {
-            title: 'Pie Chart',
-            route: '/pie-chart'
-        },
-        {
-            title: 'Line Chart',
-            route: '/line-chart'
-        },
+            this.id = params.id;
+            this.examples = [
+                {
+                    title: 'Pie Chart',
+                    route: `/pie-chart`,
+                    id: this.id
+                },
+                {
+                    title: 'Bubble Chart',
+                    route: `/bubble-chart`,
+                    id: this.id
+                }/*,
         {
             title: 'Multi Series Line Chart',
             route: '/multi-series'
@@ -45,13 +47,16 @@ export class AppComponent implements OnInit {
         {
             title: 'Donut chart',
             route: '/donut-chart'
-        },
-    ];
+        },*/
+            ];
+        });
+    }
+
+
 
     ngOnInit() {
-        this.apiService.getTitle().subscribe((data) => {
-            console.log(data);
+        /*this.apiService.getTitle().subscribe((data) => {
             this.title = data.toString();
-        });
+        })*/;
     }
 }
