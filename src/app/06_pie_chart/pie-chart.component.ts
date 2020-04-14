@@ -44,9 +44,10 @@ export class PieChartComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
             console.log(params);
-            this.apiService.getMockData(params.courseId, params.userId).subscribe(
+            this.apiService.getMockData(params.id, params.userId).subscribe(
                 data => {
                     this.data = data;
+                    console.log(this.data);
                     this.initSvg();
                     this.drawPie();
                 }
@@ -82,12 +83,13 @@ export class PieChartComponent implements OnInit {
         /*console.log(JSON.stringify(this.data));*/
         console.log(this.data);
         console.log(JSON.parse(this.data));
-        let g = this.svg.selectAll('.arc')
+        const g = this.svg.selectAll('.arc')
             .data(this.pie(JSON.parse(this.data)))
             .enter().append('g')
             .attr('class', 'arc');
         g.append('path').attr('d', this.arc)
             .style('fill', (d: any) => this.color(d.data.eventname) );
+        g.append('text').attr('transform', (d: any) => 'translate(' + this.labelArc.centroid(d) + ')')
         g.append('text').attr('transform', (d: any) => 'translate(' + this.labelArc.centroid(d) + ')')
             .attr('dy', '.35em')
             .text((d: any) => d.data.eventname);

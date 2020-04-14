@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
 
     examples = [
         {
+            title: 'Pie Chart',
+            route: '/pie-chart'
+        },
+        {
             title: 'Line Chart',
             route: '/line-chart'
         },
@@ -37,10 +41,6 @@ export class AppComponent implements OnInit {
         {
             title: 'Brush Zoom',
             route: '/brush-zoom'
-        },
-        {
-            title: 'Pie Chart',
-            route: '/pie-chart'
         },
         {
             title: 'Donut chart',

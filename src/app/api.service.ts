@@ -16,7 +16,13 @@ export class ApiService {
     }
 
     public getMockData(courseId: number, userId: number) {
+      userId = 99;
         // tslint:disable-next-line:max-line-length
         return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_mock_data&courseid=${courseId}&userid=${userId}`);
+    }
+
+    public getBubbleData(courseId: number) {
+        // tslint:disable-next-line:max-line-length
+        return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_bubble_data&courseid=${courseId}`);
     }
 }

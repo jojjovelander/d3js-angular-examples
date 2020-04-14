@@ -3,7 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatMenuModule, MatSidenavModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './01_line_chart/line-chart.component';
@@ -14,6 +15,7 @@ import { BrushZoomComponent } from './05_brush_zoom/brush-zoom.component';
 import { PieChartComponent } from './06_pie_chart/pie-chart.component';
 import { DonutChartComponent } from './07_donut_chart/donut-chart.component';
 import {HttpClientModule} from '@angular/common/http';
+import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 
 const appRoutes: Routes = [
     { path: 'line-chart', component: LineChartComponent },
@@ -22,12 +24,13 @@ const appRoutes: Routes = [
     { path: 'stacked-bar-chart', component: StackedBarChartComponent },
     { path: 'brush-zoom', component: BrushZoomComponent },
     { path: 'pie-chart', component: PieChartComponent },
+    { path: 'bubble-chart', component: BubbleChartComponent },
     { path: 'donut-chart', component: DonutChartComponent },
     { path: '',
-        redirectTo: '/line-chart',
+        redirectTo: '/pie-chart',
         pathMatch: 'full'
     },
-    { path: '**', component: LineChartComponent }
+    { path: '**', component: BubbleChartComponent }
 ];
 
 @NgModule({
@@ -39,7 +42,9 @@ const appRoutes: Routes = [
         StackedBarChartComponent,
         BrushZoomComponent,
         PieChartComponent,
+        BubbleChartComponent,
         DonutChartComponent,
+        BubbleChartComponent,
     ],
     imports: [
         BrowserModule,
