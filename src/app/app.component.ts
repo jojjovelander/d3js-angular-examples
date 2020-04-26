@@ -27,6 +27,11 @@ export class AppComponent implements OnInit {
                     title: 'Bubble Chart',
                     route: `/bubble-chart`,
                     id: this.id
+                },
+                {
+                    title: 'Group Bar Chart',
+                    route: `/grouped-bar-chart`,
+                    id: this.id
                 }/*,
         {
             title: 'Multi Series Line Chart',
@@ -57,6 +62,6 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         /*this.apiService.getTitle().subscribe((data) => {
             this.title = data.toString();
-        })*/;
+        })*/
     }
 }

@@ -17,6 +17,7 @@ import { DonutChartComponent } from './07_donut_chart/donut-chart.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import {ApiService} from './api.service';
+import {GroupedBarChartComponent} from './grouped_bar_chart/grouped-bar-chart.component';
 
 const appRoutes: Routes = [
     { path: 'line-chart', component: LineChartComponent },
@@ -26,8 +27,9 @@ const appRoutes: Routes = [
     { path: 'brush-zoom', component: BrushZoomComponent },
     { path: 'pie-chart', component: PieChartComponent },
     { path: 'bubble-chart', component: BubbleChartComponent },
+    { path: 'grouped-bar-chart', component: GroupedBarChartComponent },
     { path: 'donut-chart', component: DonutChartComponent },
-    { path: '**', component: BubbleChartComponent }
+    { path: '**', component: GroupedBarChartComponent }
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
         LineChartComponent,
         MultiSeriesComponent,
         BarChartComponent,
+        GroupedBarChartComponent,
         StackedBarChartComponent,
         BrushZoomComponent,
         PieChartComponent,

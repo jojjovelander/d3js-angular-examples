@@ -4,7 +4,6 @@
         <a mat-menu-item *ngFor="let item of examples" [routerLink]="item.route" [queryParams]="{id:item.id}" routerLinkActive="active">{{ item.title }}</a>
     </mat-drawer>
     <mat-drawer-content>
-        <h1>{{ title }}</h1>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>

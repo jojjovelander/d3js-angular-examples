@@ -20,6 +20,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //http://localhost:8000/webservice/rest/server.php?wstoken=d8b7fa8fe26b029698b4344971ffd3d3&moodlewsrestformat=json&wsfunction=local_wstemplate_hello_world
     public getTitle() {
         return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_hello_world`);
     }
@@ -33,8 +34,13 @@ export class ApiService {
 
     public getBubbleData(courseId: number) {
         const url = `${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_bubble_data&courseid=${courseId}&userid=${this.userId}`;
-            console.log(url);
-        // tslint:disable-next-line:max-line-length
-        return this.httpClient.get(`${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_get_bubble_data&courseid=${courseId}&userid=${this.userId}`);
+        console.log(url);
+        return this.httpClient.get(url);
+    }
+
+    public getUserGradeItemsByCourse(courseId: number) {
+        const url = `${this.HOST}${this.TOKEN}&moodlewsrestformat=json&wsfunction=local_wstemplate_local_wstemplate_get_user_grade_items_by_course&courseid=${courseId}&userid=${this.userId}`;
+        console.log(url);
+        return this.httpClient.get(url);
     }
 }
